@@ -15,10 +15,11 @@ import {
     Avatar,
     AvatarBadge,
     AvatarGroup,
-    Flex
+    Flex, useEditableControls
 } from "@chakra-ui/react";
 import {CheckIcon, CloseIcon, EditIcon} from "@chakra-ui/icons";
-function CustomControlsExample() {
+import type {NextPage} from "next";
+const CustomControlsExample:NextPage = ()=> {
     /* Here's a custom control */
     function EditableControls() {
         const {
@@ -30,12 +31,12 @@ function CustomControlsExample() {
 
         return isEditing ? (
             <ButtonGroup justifyContent='center' size='sm'>
-                <IconButton icon={<CheckIcon />} {...getSubmitButtonProps()} />
-                <IconButton icon={<CloseIcon />} {...getCancelButtonProps()} />
+                <IconButton aria-label="" icon={<CheckIcon />} {...getSubmitButtonProps()} />
+                <IconButton aria-label="" icon={<CloseIcon />} {...getCancelButtonProps()} />
             </ButtonGroup>
         ) : (
             <Flex justifyContent='center'>
-                <IconButton size='sm' icon={<EditIcon />} {...getEditButtonProps()} />
+                <IconButton aria-label="" size='sm' icon={<EditIcon />} {...getEditButtonProps()} />
             </Flex>
         )
     }
@@ -77,3 +78,5 @@ function CustomControlsExample() {
         </Box>
     );
 }
+
+export default CustomControlsExample
