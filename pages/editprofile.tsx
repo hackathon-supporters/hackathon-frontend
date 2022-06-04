@@ -85,10 +85,78 @@ const CustomControlsExample: NextPage = () => {
                             profile.histories.map(i=>{
                                 return <Box h='40px' bg='pink.100'>
                                     <Avatar size='sm' src={i.company.avatar} />
-                                    {i.company.name}
+                                    <Editable
+                                        textAlign='center'
+                                        defaultValue={i.company.name}
+                                        isPreviewFocusable={false}
+                                    >
+                                        <EditablePreview/>
+                                        <Flex>
+                                            <Input as={EditableInput}/>
+                                            <EditableControls/>
+                                        </Flex>
+                                    </Editable>
                                     :
-                                    {i.startMonth}-{i.startYear}~{i.endMonth}-{i.endYear}
-                                    ({i.position})
+                                    <Editable
+                                        textAlign='center'
+                                        defaultValue={i.startMonth}
+                                        isPreviewFocusable={false}
+                                    >
+                                        <EditablePreview/>
+                                        <Flex>
+                                            <Input as={EditableInput}/>
+                                            <EditableControls/>
+                                        </Flex>
+                                    </Editable>
+                                    -
+                                    <Editable
+                                        textAlign='center'
+                                        defaultValue={i.startYear}
+                                        isPreviewFocusable={false}
+                                    >
+                                        <EditablePreview/>
+                                        <Flex>
+                                            <Input as={EditableInput}/>
+                                            <EditableControls/>
+                                        </Flex>
+                                    </Editable>
+                                    ~
+                                    <Editable
+                                        textAlign='center'
+                                        defaultValue={i.endMonth}
+                                        isPreviewFocusable={false}
+                                    >
+                                        <EditablePreview/>
+                                        <Flex>
+                                            <Input as={EditableInput}/>
+                                            <EditableControls/>
+                                        </Flex>
+                                    </Editable>
+                                    -
+                                    <Editable
+                                        textAlign='center'
+                                        defaultValue={i.endYear}
+                                        isPreviewFocusable={false}
+                                    >
+                                        <EditablePreview/>
+                                        <Flex>
+                                            <Input as={EditableInput}/>
+                                            <EditableControls/>
+                                        </Flex>
+                                    </Editable>
+                                    (
+                                    <Editable
+                                        textAlign='center'
+                                        defaultValue={i.position}
+                                        isPreviewFocusable={false}
+                                    >
+                                        <EditablePreview/>
+                                        <Flex>
+                                            <Input as={EditableInput}/>
+                                            <EditableControls/>
+                                        </Flex>
+                                    </Editable>
+                                    )
                                 </Box>
                             })
                         }
