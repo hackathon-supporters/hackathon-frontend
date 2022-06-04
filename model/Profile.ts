@@ -1,12 +1,8 @@
-import {Company} from "./Company";
+import {History} from "./History";
 
 export interface Profile {
+    id: string,
     name:string,
     avatar:string,
-}
-
-export interface History{
-    company: Company
-    start: string,
-    end: string
+    histories: History[]
 }
