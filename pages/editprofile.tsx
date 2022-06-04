@@ -20,9 +20,19 @@ import {
 import {CheckIcon, CloseIcon, EditIcon} from "@chakra-ui/icons";
 import type {NextPage} from "next";
 import Navigation from "../component/Navigation";
+import {Profile} from "../model/Profile.ts";
+import {useState} from "react";
 
 const CustomControlsExample: NextPage = () => {
     /* Here's a custom control */
+    const [profile,setProfile] = useState<Profile>({avatar: "", histories: [{
+            company: {icon: "", id: "364364", name: "Microsoft"},
+            endMonth: 0,
+            endYear: 0,
+            position: "CEO",
+            startMonth: 0,
+            startYear: 0
+        }], id: "114514", name: "TaroTanaka"});
     function EditableControls() {
         const {
             isEditing,
@@ -51,12 +61,12 @@ const CustomControlsExample: NextPage = () => {
 
                     <Flex justifyContent="space-between" h="128px" w={"600px"}>
                         <Box>
-                            <Avatar size='2xl' name='aaaa' src='https://pbs.twimg.com/media/EZu_kWdUEAUW6gq.jpg'/>
+                            <Avatar size='2xl' src={profile.avatar}/>
                         </Box>
                         <Center>
                             <Editable
                                 textAlign='center'
-                                defaultValue='aaaa'
+                                defaultValue={profile.name}
                                 isPreviewFocusable={false}
                             >
                                 <EditablePreview/>
@@ -71,23 +81,17 @@ const CustomControlsExample: NextPage = () => {
                         </Center>
                     </Flex>
                     <VStack pt={10} divider={<StackDivider borderColor='gray.200'/>} spacing={4} align='stretch'>
-                        <Flex p={5} boxSizing="content-box" justifyContent="space-between" h='40px' bg='pink.100'>
-                            <Avatar size='sm' name='company'
-                                    src='https://pbs.twimg.com/profile_images/1161189849048600576/u_k9IPM2_400x400.jpg'/>
-                            <Editable
-                                pl={5}
-                                w="full"
-                                justifyContent="space-between"
-                                textAlign='center'
-                                display="flex"
-                                defaultValue='株式会社ウカツキコデマヌシ'
-                                isPreviewFocusable={false}
-                            >
-                                <EditablePreview/>
-                                <Input as={EditableInput}/>
-                                <EditableControls/>
-                            </Editable>
-                        </Flex>
+                        {
+                            profile.histories.map(i=>{
+                                return <Box h='40px' bg='pink.100'>
+                                    <Avatar size='sm' src={i.company.avatar} />
+                                    {i.company.name}
+                                    :
+                                    {i.startMonth}-{i.startYear}~{i.endMonth}-{i.endYear}
+                                    ({i.position})
+                                </Box>
+                            })
+                        }
                     </VStack>
                 </Box>
             </Box>
