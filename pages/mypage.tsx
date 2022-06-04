@@ -1,4 +1,6 @@
 import {
+    StackDivider,
+    VStack,
     Box,
     Button,
     Center,
@@ -25,9 +27,12 @@ const MyPage:NextPage = ()=>{
                     <Button colorScheme='blue'>まずは話を聞いてみる</Button>
                 </Center>
             </Flex>
-            <Box pt="100px">
-                aaa
-            </Box>
+            <VStack divider={<StackDivider borderColor='gray.200' />} spacing={4} align='stretch'>
+                <Box h='40px' bg='pink.100'>
+                    <Avatar size='sm' name='company' src='https://pbs.twimg.com/profile_images/1161189849048600576/u_k9IPM2_400x400.jpg' />
+                    株式会社ウカツキコデマヌシ
+                </Box>
+            </VStack>
         </Box>
     </Box>;
 }
