@@ -45,7 +45,7 @@ const MyPage:NextPage = ()=>{
             startMonth: 0,
             startYear: 0
         }], id: "114514", name: "TaroTanaka"});
-    if(me.id===profile.id){
+    if(me && me.id===profile.id){
         return <Box>
             <Navigation/>
             <Box display="flex" justifyContent="center" w={"full"} h="100vh">
@@ -67,7 +67,7 @@ const MyPage:NextPage = ()=>{
                         {
                             profile.histories.map(i=>{
                                 return <Box h='40px' bg='pink.100'>
-                                    <Avatar size='sm' src={i.company.avatar} />
+                                    <Avatar size='sm' src={i.company.icon} />
                                     {i.company.name}
                                     :
                                     {i.startMonth}-{i.startYear}~{i.endMonth}-{i.endYear}
@@ -102,7 +102,7 @@ const MyPage:NextPage = ()=>{
                         {
                             profile.histories.map(i => {
                                 return <Box h='40px' bg='pink.100'>
-                                    <Avatar size='sm' src={i.company.avatar}/>
+                                    <Avatar size='sm' src={i.company.icon}/>
                                     {i.company.name}
                                     :
                                     {i.startMonth}-{i.startYear}~{i.endMonth}-{i.endYear}

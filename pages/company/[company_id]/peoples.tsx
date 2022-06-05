@@ -13,38 +13,7 @@ const BelongCompanyPeoples:NextPage = ()=>{
 
     const [company,setCompany] = useState<Company>();
 
-    const [peoples,setPeoples] = useState<Profile[]>([
-        {
-            id:"a",
-            avatar: "",
-            name: "田中 太郎",
-            histories: [{
-                position: "エグゼクティブマネージャー",
-                company: {
-                    icon: "",
-                    name: "",
-                    id: "",
-                },
-                start: "2020/01",
-                end: "2021/03",
-            }]
-        },{
-            id:"b",
-            avatar: "",
-            name: "田中 太郎",
-            histories: []
-        },{
-            id:"c",
-            avatar: "",
-            name: "田中 太郎",
-            histories: []
-        },{
-            id:"d",
-            avatar: "",
-            name: "田中 太郎",
-            histories: []
-        }
-    ])
+    const [peoples,setPeoples] = useState<Profile[]>([])
 
     useEffect(()=>{
 
@@ -76,7 +45,7 @@ const BelongCompanyPeoples:NextPage = ()=>{
                                                         <Box pt={4}>
                                                             {
                                                                 (i.histories ? i.histories : []).map(j=>{
-                                                                    return <chakra.p>{`${j.start}から${j.end}まで ${j.position}として勤務`}</chakra.p>
+                                                                    return <chakra.p>{`${j.startYear}/${j.startMonth}から${j.endYear}/${j.endMonth}まで`}</chakra.p>
                                                                 })
                                                             }
                                                         </Box>

@@ -9,36 +9,21 @@ const ProfilePage = ()=>{
     //user_id
     const {id} = useRouter().query
 
-    const [profile,setProfile] = useState<Profile>({
-        id:"a",
-        avatar: "https://pbs.twimg.com/media/EZu_kWdUEAUW6gq.jpg",
-        name: "田中 太郎",
-        histories: [{
-            position: "エグゼクティブマネージャー",
-            company: {
-                icon: "",
-                name: "",
-                id: "",
-            },
-            start: "2020/01",
-            end: "2021/03",
-        },{
-            position: "エグゼクティブマネージャー",
-            company: {
-                icon: "https://pbs.twimg.com/profile_images/1161189849048600576/u_k9IPM2_400x400.jpg",
-                name: "株式会社ウカツキコデマヌシ",
-                id: "aaa",
-            },
-            start: "2020/01",
-            end: "2021/03",
-        }]
-    })
+    const [profile,setProfile] = useState<Profile>()
 
     useEffect(()=>{
-
+        (async ()=>{
+            const r = await fetch(`https://matchquiter.herokuapp.com/api/v1/profile/who?user_id=${id}`)
+            if(!r.ok){
+                return
+            }
+            const j:Profile = await r.json()
+            console.log(j)
+            setProfile(j)
+        })()
     },[])
 
-    return <Box>
+    return profile && <Box>
         <Navigation/>
         <Box display="flex" justifyContent="center" w={"full"} h="100vh">
             <Box pt="100px">
@@ -67,7 +52,7 @@ const ProfilePage = ()=>{
                                     </Flex>
                                     <Box pt={5}>
                                         <chakra.p>{`${i.position}として勤務`}</chakra.p>
-                                        <chakra.p>{`${i.start}から${i.end}まで`}</chakra.p>
+                                        <chakra.p>{`${i.startYear}/${i.startMonth}から${i.endYear}/${i.endMonth}まで`}</chakra.p>
                                     </Box>
                                 </Box>
                             })

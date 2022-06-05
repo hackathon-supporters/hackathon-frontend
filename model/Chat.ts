@@ -1,11 +1,12 @@
-type Accepted = 1;
-type Wait = 0;
+
 
 export interface ChatRoom {
     // 0 = 承認待ち or 1 = 承認済み
-    accepted_status: Accepted|Wait
+    state: number,
     //room id
-    id:string,
+    room_id:string,
     //就活生のid
-    received_from:string
+    student_id:string,
+    //社会人のid
+    society_id:string,
 }
