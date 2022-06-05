@@ -20,10 +20,10 @@ import {
 import {CheckIcon, CloseIcon, EditIcon} from "@chakra-ui/icons";
 import type {NextPage} from "next";
 import Navigation from "../component/Navigation";
-import {Profile} from "../model/Profile.ts";
+import {Profile} from "../model/Profile";
 import {useState} from "react";
 
-const CustomControlsExample: NextPage = () => {
+const EditProfilePage: NextPage = () => {
     /* Here's a custom control */
     const [profile,setProfile] = useState<Profile>({avatar: "", histories: [{
             company: {icon: "", id: "364364", name: "Microsoft"},
@@ -83,80 +83,10 @@ const CustomControlsExample: NextPage = () => {
                     <VStack pt={10} divider={<StackDivider borderColor='gray.200'/>} spacing={4} align='stretch'>
                         {
                             profile.histories.map(i=>{
-                                return <Box h='40px' bg='pink.100'>
-                                    <Avatar size='sm' src={i.company.avatar} />
-                                    <Editable
-                                        textAlign='center'
-                                        defaultValue={i.company.name}
-                                        isPreviewFocusable={false}
-                                    >
-                                        <EditablePreview/>
-                                        <Flex>
-                                            <Input as={EditableInput}/>
-                                            <EditableControls/>
-                                        </Flex>
-                                    </Editable>
-                                    :
-                                    <Editable
-                                        textAlign='center'
-                                        defaultValue={i.startMonth}
-                                        isPreviewFocusable={false}
-                                    >
-                                        <EditablePreview/>
-                                        <Flex>
-                                            <Input as={EditableInput}/>
-                                            <EditableControls/>
-                                        </Flex>
-                                    </Editable>
-                                    -
-                                    <Editable
-                                        textAlign='center'
-                                        defaultValue={i.startYear}
-                                        isPreviewFocusable={false}
-                                    >
-                                        <EditablePreview/>
-                                        <Flex>
-                                            <Input as={EditableInput}/>
-                                            <EditableControls/>
-                                        </Flex>
-                                    </Editable>
-                                    ~
-                                    <Editable
-                                        textAlign='center'
-                                        defaultValue={i.endMonth}
-                                        isPreviewFocusable={false}
-                                    >
-                                        <EditablePreview/>
-                                        <Flex>
-                                            <Input as={EditableInput}/>
-                                            <EditableControls/>
-                                        </Flex>
-                                    </Editable>
-                                    -
-                                    <Editable
-                                        textAlign='center'
-                                        defaultValue={i.endYear}
-                                        isPreviewFocusable={false}
-                                    >
-                                        <EditablePreview/>
-                                        <Flex>
-                                            <Input as={EditableInput}/>
-                                            <EditableControls/>
-                                        </Flex>
-                                    </Editable>
-                                    (
-                                    <Editable
-                                        textAlign='center'
-                                        defaultValue={i.position}
-                                        isPreviewFocusable={false}
-                                    >
-                                        <EditablePreview/>
-                                        <Flex>
-                                            <Input as={EditableInput}/>
-                                            <EditableControls/>
-                                        </Flex>
-                                    </Editable>
-                                    )
+                                return <Box mt={10} boxSizing="content-box" borderWidth="0.8px" p={5}>
+                                    <Box>{i.company.name}に勤務</Box>
+                                    <Box>{i.position}に所属</Box>
+                                    <Box>{`${i.startYear}年${i.startMonth}月から${i.endYear}年${i.endMonth}月まで所属`}</Box>
                                 </Box>
                             })
                         }
@@ -167,4 +97,4 @@ const CustomControlsExample: NextPage = () => {
     );
 }
 
-export default CustomControlsExample
+export default EditProfilePage
