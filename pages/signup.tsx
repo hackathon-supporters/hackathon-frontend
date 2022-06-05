@@ -3,6 +3,8 @@ import {Box, Button, Center, chakra, Input} from "@chakra-ui/react";
 import {useState} from "react";
 import {LoginToken} from "../model/LoginToken";
 import {useRouter} from "next/router";
+import {useRecoilState} from "recoil";
+import {loginStatusAtom} from "../atom/loginstatus";
 
 const SignUpPage:NextPage = ()=>{
 
@@ -10,6 +12,8 @@ const SignUpPage:NextPage = ()=>{
 
     const [mail,setMail] = useState("");
     const [password,setPassword] = useState("");
+
+    const [profile,setProfile] = useRecoilState(loginStatusAtom);
 
     const login = async ()=>{
         const fd = new FormData();
@@ -22,12 +26,21 @@ const SignUpPage:NextPage = ()=>{
         if(r.ok){
             const tokenR:LoginToken = await r.json()
             window.localStorage.setItem("authorization",tokenR.token)
+
+            const profile = await fetch("https://matchquiter.herokuapp.com/api/v1/profile",{
+                headers: {
+                    Authorization: tokenR.token
+                },
+                method: "GET"
+            })
+
+            setProfile(await profile.json());
+
             router.push("/")
         }else{
             window.alert("エラーが発生しました")
         }
     }
-
     const handleSignUp = ()=>{
         (async ()=>{
             const fd = new FormData();
