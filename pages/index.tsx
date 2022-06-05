@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import {Box, Button, Center, chakra, Flex, Input, Wrap} from "@chakra-ui/react";
+import {Avatar, Box, Button, Center, chakra, Flex, Input, Wrap} from "@chakra-ui/react";
 import {useEffect, useState} from "react";
 import {Company} from "../model/Company";
 import Navigation from "../component/Navigation";
@@ -9,7 +9,16 @@ const Home: NextPage = () => {
   const [companies,setCompanies] = useState<Company[]>([]);
 
   useEffect(()=>{
-    console.log("初回ロード時に実行される内容")
+    (async ()=>{
+      const r = await fetch("https://matchquiter.herokuapp.com/api/v1/resources/companies",{
+        headers:{
+          Authorization: String(window.localStorage.getItem("authorization")),
+        },
+        method:"GET",
+      })
+      const j:Company[] = await r.json()
+      setCompanies(j)
+    })()
   },[])
 
   return <Box>
@@ -36,7 +45,8 @@ const Home: NextPage = () => {
             companies.map(i => {
               return <Box key={i.id} pr={2} pb={2}>
                 <Box borderWidth="1px" w="100px" h="100px">
-                  {i.name}
+                  {i.companyname}
+                  <Avatar src={i.logoicon}/>
                 </Box>
               </Box>
             })

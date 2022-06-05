@@ -26,7 +26,7 @@ import {useState} from "react";
 const EditProfilePage: NextPage = () => {
     /* Here's a custom control */
     const [profile,setProfile] = useState<Profile>({avatar: "", histories: [{
-            company: {icon: "", id: "364364", name: "Microsoft"},
+            company: {logoicon: "", id: "364364", companyname: "Microsoft"},
             endMonth: 0,
             endYear: 0,
             position: "CEO",
@@ -84,7 +84,7 @@ const EditProfilePage: NextPage = () => {
                         {
                             profile.histories.map(i=>{
                                 return <Box mt={10} boxSizing="content-box" borderWidth="0.8px" p={5}>
-                                    <Box>{i.company.name}に勤務</Box>
+                                    <Box>{i.company.companyname}に勤務</Box>
                                     <Box>{i.position}に所属</Box>
                                     <Box>{`${i.startYear}年${i.startMonth}月から${i.endYear}年${i.endMonth}月まで所属`}</Box>
                                 </Box>

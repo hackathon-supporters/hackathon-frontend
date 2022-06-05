@@ -38,7 +38,7 @@ const MyPage:NextPage = ()=>{
     const router = useRouter();
     const [me,setMe] = useRecoilState(loginStatusAtom);
     const [profile,setProfile] = useState<Profile>({avatar: "", histories: [{
-            company: {icon: "", id: "364364", name: "Microsoft"},
+            company: {logoicon: "", id: "364364", companyname: "Microsoft"},
             endMonth: 0,
             endYear: 0,
             position: "CEO",
@@ -67,8 +67,8 @@ const MyPage:NextPage = ()=>{
                         {
                             profile.histories.map(i=>{
                                 return <Box h='40px' bg='pink.100'>
-                                    <Avatar size='sm' src={i.company.icon} />
-                                    {i.company.name}
+                                    <Avatar size='sm' src={i.company.logoicon} />
+                                    {i.company.companyname}
                                     :
                                     {i.startMonth}-{i.startYear}~{i.endMonth}-{i.endYear}
                                     ({i.position})
@@ -102,8 +102,8 @@ const MyPage:NextPage = ()=>{
                         {
                             profile.histories.map(i => {
                                 return <Box h='40px' bg='pink.100'>
-                                    <Avatar size='sm' src={i.company.icon}/>
-                                    {i.company.name}
+                                    <Avatar size='sm' src={i.company.logoicon}/>
+                                    {i.company.companyname}
                                     :
                                     {i.startMonth}-{i.startYear}~{i.endMonth}-{i.endYear}
                                     ({i.position})

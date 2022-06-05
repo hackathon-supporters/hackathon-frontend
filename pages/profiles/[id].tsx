@@ -45,9 +45,9 @@ const ProfilePage = ()=>{
                             profile.histories.map(i=>{
                                 return <Box>
                                     <Flex>
-                                        <Avatar size='sm' name='company' src={i.company.icon} />
+                                        <Avatar size='sm' name='company' src={i.company.logoicon} />
                                         <Center pl={3}>
-                                            <chakra.p>{i.company.name}</chakra.p>
+                                            <chakra.p>{i.company.companyname}</chakra.p>
                                         </Center>
                                     </Flex>
                                     <Box pt={5}>

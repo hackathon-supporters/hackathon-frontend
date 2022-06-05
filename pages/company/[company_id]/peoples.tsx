@@ -24,10 +24,10 @@ const BelongCompanyPeoples:NextPage = ()=>{
         <Center w="full">
             <Box w={"500px"}>
                 <Flex pl={5} pr={5} pt="100px">
-                    <Avatar size="2xl" src={company?.icon}/>
+                    <Avatar size="2xl" src={company?.logoicon}/>
                     <Spacer/>
                     <Center>
-                        <chakra.h1 fontSize="25px">{company?.name}に所属していた社員の方々</chakra.h1>
+                        <chakra.h1 fontSize="25px">{company?.companyname}に所属していた社員の方々</chakra.h1>
                     </Center>
                 </Flex>
                 <Box pt={10}>
@@ -38,7 +38,7 @@ const BelongCompanyPeoples:NextPage = ()=>{
                                     <Link href={`/profiles/${i.id}`}>
                                         <a>
                                             <Flex>
-                                                <Avatar size="2xl" src={company?.icon}/>
+                                                <Avatar size="2xl" src={company?.logoicon}/>
                                                 <Center pl={5}>
                                                     <Box>
                                                         <chakra.p fontSize="25px">{i.name}</chakra.p>
