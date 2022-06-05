@@ -1,10 +1,9 @@
 import {Box, Center, Flex, IconButton, Spacer} from "@chakra-ui/react";
 import {ChatIcon, EditIcon} from "@chakra-ui/icons";
 import {useRouter} from "next/router";
-import {loginStatusAtom} from "../atom/loginstatus";
 
 const Navigation = ()=>{
-    const router = useRouter(loginStatusAtom);
+    const router = useRouter();
     const VisitEdit=()=>{
         router.push("/editprofile");
     }
@@ -16,10 +15,9 @@ const Navigation = ()=>{
                 </Box>
             </Center>
             <Spacer/>
-            <IconButton onClick={()=>{VisitEdit()}} aria-label={"edit"}>
+            <IconButton mr={3} onClick={()=>{VisitEdit()}} aria-label={"edit"}>
                 <EditIcon/>
             </IconButton>
-            <Spacer/>
             <IconButton aria-label={"chat"}>
                 <ChatIcon/>
             </IconButton>
